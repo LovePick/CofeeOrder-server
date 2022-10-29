@@ -42,6 +42,7 @@ app.post("/new-order", upload.array(), function (req, res) {
 //UPDATE ORDER
 app.put("/orders/:id", upload.array(), function (req, res) {
   const orderId = req.params["id"];
+  console.log("UPDATE");
   console.log(req.body);
 
   let name = req.body.name;
@@ -69,7 +70,7 @@ app.delete("/orders/:id", function (req, res) {
   const updateOrder = orders[orderId];
   if (updateOrder) {
     delete orders[orderId];
-    res.status(200).json(orders);
+    res.status(200).json(updateOrder);
   } else {
     res.status(400).json({ success: false, message: "Wrong ID" });
   }
